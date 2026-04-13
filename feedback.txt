@@ -1,0 +1,9 @@
+Look at main-deadlock-global.c again.
+
+* The global lock removes the possibility of the deadlock.  Why?
+
+* What does this tell you about what helgrind can and can't do.
+
+Please just submit the answers to these two questions.
+
+(p)
