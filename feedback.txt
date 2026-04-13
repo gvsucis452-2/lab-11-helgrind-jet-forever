@@ -2,7 +2,15 @@ Look at main-deadlock-global.c again.
 
 * The global lock removes the possibility of the deadlock.  Why?
 
+    The global lock removes all possiblity of the deadlock because it forces the threads to happen one at a time. thread 2 cannot start getting any locks what so ever until thread 1 is completely done.
+    In the other scenario the two threads can claim one lock and wait to try and claim the other while the other thread is trying to do the same thing resulting in a deadlock. With the global lock it
+    prevents the possibility of there being a scenario like that because of the explained inability to claim the locks until the other thread is completely done.
+
 * What does this tell you about what helgrind can and can't do.
+
+    This tells us that helgrind can sometimes give false positives. This code will not result in a deadlock but helgrind does report that it will. I think this may be because it is just looking at patterns
+    and it is not taking in the full picture. It sees the locks inside of the global lock and sees that it can result in a case where there is a deadlock, hwowver because of the global lock it will not deadlock.
+    Helgrind is a useful tool for finding these kind of deadlocks but you should also double check its work to make sure.
 
 Please just submit the answers to these two questions.
 
